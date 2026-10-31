@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SafeSpot: Spy Scanner &amp; VPN - Privacy Policy</title>
+<style>body{font-family:system-ui,sans-serif;max-width:760px;margin:2em auto;padding:0 1em;line-height:1.6;color:#1b1f2a}h1{color:#0B2A6B}h2{color:#0B2A6B;margin-top:1.6em}</style></head>
+<body>
+<h1>SafeSpot: Spy Scanner &amp; VPN - Privacy Policy</h1>
+<p><em>Last updated: October 31, 2026</em></p>
+<p>SafeSpot (package <code>com.safespot.scanner</code>) is a free, open-source (GPL-3.0) app developed by FrostCore Labs. This policy explains what data the app handles.</p>
+
+<h2>1. On-device scanning</h2>
+<p>All scans run locally on your device. To find stalkerware and malware, SafeSpot reads the list of installed apps (using the QUERY_ALL_PACKAGES permission), their permissions, signing certificates, install source, and whether they use accessibility, device-admin or notification-listener access. It can also compute SHA-256 hashes of app files and of APK files in a folder you choose. <strong>This information never leaves your device</strong>, except for the optional hash lookup described below. Scan history, streaks and settings are stored only on your device and are deleted when you uninstall the app.</p>
+
+<h2>2. Optional cloud hash lookup (MalwareBazaar)</h2>
+<p>If you turn it on (it is off by default), SafeSpot sends <strong>only the SHA-256 hashes</strong> of sideloaded apps and of files you scanned to MalwareBazaar, a service run by abuse.ch, to check whether they are known malware. It never sends files, app names or personal data. abuse.ch's own terms and privacy policy apply: <a href="https://abuse.ch/">abuse.ch</a>.</p>
+
+<h2>3. Database and server-list updates</h2>
+<p>The app downloads public threat databases and the VPN server list from <code>micky9889900.github.io</code> (GitHub Pages) and from <code>vpngate.net</code>. These requests are ordinary web requests. Like any web server, those hosts can see your IP address. GitHub's privacy statement applies to GitHub Pages.</p>
+
+<h2>4. VPN</h2>
+<p>SafeSpot's VPN uses Android's VpnService and the open-source OpenVPN client (ics-openvpn). It connects to free <strong>volunteer-run servers of the VPN Gate Academic Experiment</strong> (University of Tsukuba, Japan), not to servers run by us. <strong>We do not operate these servers, and we do not log, inspect, modify, or sell your traffic or browsing activity.</strong> No ads or tracking are injected into VPN traffic. VPN Gate and its volunteer operators may keep connection logs under their own policy (<a href="https://www.vpngate.net/en/about_abuse.aspx">VPN Gate policy</a>), so don't use the free servers for sensitive activity. The app measures ping times to servers and shows data counters locally. If you enable "Malware-blocking DNS", DNS queries made while connected go to Quad9 (<a href="https://quad9.net/privacy/policy/">Quad9 privacy policy</a>).</p>
+
+<h2>5. Advertising (Google AdMob)</h2>
+<p>SafeSpot shows ads using Google AdMob. AdMob may collect and process data such as your device's advertising ID, IP address and ad-interaction data to serve and measure ads. Where required (for example in the EEA, UK and Switzerland), SafeSpot shows Google's User Messaging Platform consent form before any personalized ads, and you can change your choice later. You can reset or delete your advertising ID in Android settings. See <a href="https://policies.google.com/technologies/partner-sites">how Google uses data from apps that use its services</a>.</p>
+
+<h2>6. Notifications</h2>
+<p>If you enable the daily check, SafeSpot schedules a local alarm and shows local notifications. No data is sent for this.</p>
+
+<h2>7. What we do not do</h2>
+<ul><li>We have no accounts and no servers that collect your data.</li><li>We do not sell or share personal data.</li><li>We do not collect your app list, files, contacts, messages or location.</li></ul>
+
+<h2>8. Children</h2>
+<p>SafeSpot is not directed at children under 13.</p>
+
+<h2>9. Open source</h2>
+<p>The source code is public: <a href="https://github.com/Micky9889900/safespot">github.com/Micky9889900/safespot</a>.</p>
+
+<h2>10. Changes and contact</h2>
+<p>If this policy changes, the new version will be posted on this page. For questions, contact the developer: <a href="mailto:safespot.crashreports@gmail.com">safespot.crashreports@gmail.com</a>.</p>
+</body></html>

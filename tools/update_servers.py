@@ -9,6 +9,7 @@ from datetime import datetime, timezone, timedelta
 
 API = "https://www.vpngate.net/api/iphone/"
 OUT = "vpn/servers.json"
+POOL = "vpn/pool.json"  # every relay seen in the last 48h (the API only shows a rotating sample)
 FETCHES, PER_COUNTRY, BIG_COUNTRY, KEEP_HOURS = 6, 5, 8, 48
 MIN_SERVERS, MIN_COUNTRIES = 15, 5
 now = datetime.now(timezone.utc)
@@ -35,7 +36,8 @@ def parse(txt):
 
 pool = {}
 try:
-    for s in json.load(open(OUT)).get("servers", []):
+    prev = json.load(open(POOL)) if __import__("os").path.exists(POOL) else json.load(open(OUT))
+    for s in prev.get("servers", []):
         seen = s.get("lastSeen")
         if seen and now - datetime.fromisoformat(seen) < timedelta(hours=KEEP_HOURS): pool[s["id"]] = s
 except Exception as e: print("no previous list:", e)
@@ -54,7 +56,10 @@ def alive(s):
         try:
             with socket.create_connection((s["host"], s["port"]), timeout=4): return s["proto"].startswith("tcp")
         except Exception: return False
-with ThreadPoolExecutor(64) as ex: ok = [s for s, a in zip(pool.values(), ex.map(alive, pool.values())) if a]
+json.dump(dict(updated=now.isoformat(), servers=list(pool.values())), open(POOL, "w"), separators=(",", ":"))
+recent = (now - timedelta(hours=6)).isoformat()
+# reachable from the runner, or listed by VPN Gate in the last 6h (runner networks block some relays)
+with ThreadPoolExecutor(64) as ex: ok = [s for s, a in zip(pool.values(), ex.map(alive, pool.values())) if a or s["lastSeen"] >= recent]
 print(f"pool {len(pool)}, reachable {len(ok)}")
 
 by = {}
